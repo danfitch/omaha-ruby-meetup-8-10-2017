@@ -1,0 +1,17 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: dans-deployment
+spec:
+  replicas: 3 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: ruby-app
+    spec:
+      containers:
+      - name: ruby-app
+        image: danfitch/ruby-app
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always

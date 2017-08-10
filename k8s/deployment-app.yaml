@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: dans-deployment
+spec:
+  replicas: 3 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: ruby-app
+    spec:
+      containers:
+      - name: ruby-app
+        image: danfitch/ruby-app
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always # This will check the health of every pod
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
+          initialDelaySeconds: 1
+          periodSeconds: 3
+        env:
+          - name: MY_POD_IP
+            valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP

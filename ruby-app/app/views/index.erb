@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<meta http-equiv="refresh" content="2">
+</head>
+<body>
+
+<!-- Begin page content -->
+  <div class="container">
+    <div class="page-header">
+      <h1>Pods</h1>
+      <ul class="list-group">
+       <% @pods.each do |pod| %>
+         <li class="list-group-item"><%= pod %></li>
+       <% end %>
+      </ul>
+      <p>Traffic Count</p>
+      <ul class="list-group">
+      <% @stats.each do |pod_ip, count| %>
+        <li class="list-group-item">
+          <span class="badge"><%= count %></span>
+          <%= pod_ip %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

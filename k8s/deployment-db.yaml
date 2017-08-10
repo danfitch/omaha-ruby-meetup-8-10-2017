@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: dans-db-deployment
+spec:
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: redis-db
+    spec:
+      containers:
+      - name: my-redis
+        image: redis
+        ports:
+        - containerPort: 6379

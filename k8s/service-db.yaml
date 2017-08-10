@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: dans-redis-db
+spec:
+  selector:
+    app: redis-db
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
